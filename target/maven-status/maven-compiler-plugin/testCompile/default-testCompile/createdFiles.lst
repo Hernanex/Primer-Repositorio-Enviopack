@@ -1,0 +1,6 @@
+Enviopack\App\Laboratorio1.class
+com\enviopack\config\ConfigReader.class
+Enviopack\App\PruebaDeLectura.class
+com\enviopack\common\BaseTest.class
+Enviopack\App\AppTest.class
+Enviopack\App\TestDePrueba.class

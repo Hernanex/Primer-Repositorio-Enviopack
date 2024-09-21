@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-09-19T12:57:26 ART" name="Surefire suite" finished-at="2024-09-19T12:57:38 ART" duration-ms="12232">
+    <groups>
+    </groups>
+    <test started-at="2024-09-19T12:57:26 ART" name="Surefire test" finished-at="2024-09-19T12:57:38 ART" duration-ms="12232">
+      <class name="Enviopack.App.TestDePrueba">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:Enviopack.App.TestDePrueba@25d250c6]" started-at="2024-09-19T12:57:30 ART" name="setUp" finished-at="2024-09-19T12:57:31 ART" duration-ms="704" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="baseTest()[pri:0, instance:Enviopack.App.TestDePrueba@25d250c6]" started-at="2024-09-19T12:57:31 ART" name="baseTest" finished-at="2024-09-19T12:57:38 ART" duration-ms="6794" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Enviopack.App.TestDePrueba@25d250c6]" started-at="2024-09-19T12:57:38 ART" name="tearDown" finished-at="2024-09-19T12:57:38 ART" duration-ms="164" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Enviopack.App.TestDePrueba -->
+      <class name="com.enviopack.common.BaseTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.enviopack.common.BaseTest@f8c1ddd]" started-at="2024-09-19T12:57:26 ART" name="setUp" finished-at="2024-09-19T12:57:27 ART" duration-ms="1245" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="baseTest()[pri:0, instance:com.enviopack.common.BaseTest@f8c1ddd]" started-at="2024-09-19T12:57:27 ART" name="baseTest" finished-at="2024-09-19T12:57:30 ART" duration-ms="3061" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.enviopack.common.BaseTest@f8c1ddd]" started-at="2024-09-19T12:57:30 ART" name="tearDown" finished-at="2024-09-19T12:57:30 ART" duration-ms="216" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.enviopack.common.BaseTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
