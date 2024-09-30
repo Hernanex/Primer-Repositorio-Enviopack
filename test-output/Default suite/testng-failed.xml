@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.enviopack.tests.LoginTest">
+      <class name="com.enviopack.tests.AccessAccount">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="testLogin"/>
+          <include name="AccessIdAccount"/>
         </methods>
-      </class> <!-- com.enviopack.tests.LoginTest -->
+      </class> <!-- com.enviopack.tests.AccessAccount -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

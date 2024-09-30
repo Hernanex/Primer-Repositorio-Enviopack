@@ -14,7 +14,7 @@ public class WaitHelper {
     // Constructor que inicializa el WebDriver y el WebDriverWait con un tiempo de espera de 20 segundos
     public WaitHelper(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     // Método que espera a que un elemento sea visible en la página
