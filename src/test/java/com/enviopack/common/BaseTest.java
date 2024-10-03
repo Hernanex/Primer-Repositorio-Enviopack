@@ -1,24 +1,22 @@
 package com.enviopack.common;
 
 import com.enviopack.config.ConfigReader;
+import com.enviopack.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
 import java.io.IOException;
 
 public class BaseTest {
-    protected WebDriver driver;
-    protected String url;			
-    protected String email;
-    protected String password;
+    private WebDriver driver; 
+    private String url;  
 
     @BeforeMethod
     public void setUp() {
         try {
             ConfigReader.cargarConfiguracion("config/config.json");
             this.url = ConfigReader.getValor("url");
-            this.email = ConfigReader.getValor("email");
-            this.password = ConfigReader.getValor("password");
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Error al cargar la configuración.");
@@ -30,11 +28,51 @@ public class BaseTest {
         }
 
         driver = CustomWebDriverManager.getDriver(browser);
+        driver.manage().window().maximize();
+        driver.get(url);  
+        
     }
 
     @AfterMethod
     public void tearDown() {
-    	CustomWebDriverManager.quitDriver();
+        CustomWebDriverManager.quitDriver();
+    }
+    
+    // Método para obtener el WebDriver
+    protected WebDriver getDriver() {
+        return driver;
+    }
+    
+    // Obtener credenciales admin
+    protected String[] getAdminCredentials() {
+        String email = ConfigReader.getValor("email_admin");
+        String password = ConfigReader.getValor("password_admin");
+        return new String[]{email, password};
+    }
+    // Obtener credenciales seller
+    protected String[] getSellerCredentials() {
+        String email = ConfigReader.getValor("email_seller");
+        String password = ConfigReader.getValor("password_seller");
+        return new String[]{email, password};
+    }
+
+    // Método centralizado para login
+    protected void login(String email, String password) {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
+        loginPage.clickLogin();
+    } 
+    
+    //Metodo para acceder como admin
+    protected void loginAdmin() {
+        String[] adminCredentials = getAdminCredentials();
+        login(adminCredentials[0], adminCredentials[1]);
+    }
+    
+    //Metodo para acceder como seller
+    protected void loginSeller() {
+        String[] sellerCredentials = getSellerCredentials();
+        login(sellerCredentials[0], sellerCredentials[1]);
     }
 }
-

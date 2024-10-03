@@ -2,16 +2,19 @@ package com.enviopack.tests;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import com.enviopack.common.BaseTest;
 import com.enviopack.pages.HomePage;
 
-public class AccessAccount extends LoginTest {
-	
-	  @Test
-	  @Parameters({"seller"}) // Asegúrate de que la anotación esté aquí
-	    public void AccessIdAccount(String seller) {
-	        HomePage homepage = new HomePage(driver);
-	        homepage.clickAccessAccountButton();
-	        homepage.enterSeller(seller);
-	        homepage.selectFirstSeller();
-	}
+public class AccessAccount extends BaseTest {
+    @Test
+    @Parameters({"seller"}) 
+    public void AccessIdAccount(String seller) {
+
+    	loginAdmin();  // Realiza el login como administrador
+
+        HomePage homepage = new HomePage(getDriver());
+        homepage.clickAccessAccountButton();
+        homepage.enterSeller(seller);
+        homepage.selectFirstSeller();
+    }
 }

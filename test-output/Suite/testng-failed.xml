@@ -8,7 +8,7 @@
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="AccessIdAccount" invocation-numbers="0"/>
+          <include name="AccessIdAccount"/>
         </methods>
       </class> <!-- com.enviopack.tests.AccessAccount -->
     </classes>
