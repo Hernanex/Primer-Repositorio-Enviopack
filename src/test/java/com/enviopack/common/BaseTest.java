@@ -65,13 +65,13 @@ public class BaseTest {
     } 
     
     //Metodo para acceder como admin
-    protected void loginAdmin() {
+    protected void performLoginAdmin() {
         String[] adminCredentials = getAdminCredentials();
         login(adminCredentials[0], adminCredentials[1]);
     }
     
     //Metodo para acceder como seller
-    protected void loginSeller() {
+    protected void performLoginSeller() {
         String[] sellerCredentials = getSellerCredentials();
         login(sellerCredentials[0], sellerCredentials[1]);
     }

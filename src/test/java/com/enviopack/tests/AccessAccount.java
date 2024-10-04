@@ -10,7 +10,7 @@ public class AccessAccount extends BaseTest {
     @Parameters({"seller"}) 
     public void AccessIdAccount(String seller) {
 
-    	loginAdmin();  // Realiza el login como administrador
+    	performLoginAdmin();  // Realiza el login como administrador
 
         HomePage homepage = new HomePage(getDriver());
         homepage.clickAccessAccountButton();

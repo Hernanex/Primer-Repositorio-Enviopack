@@ -8,11 +8,11 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginAdmin() {
-    	loginAdmin();
+    	performLoginAdmin();
     }
 
     @Test
     public void loginSeller() {
-    	loginSeller();
+    	performLoginSeller();
     }
 }
