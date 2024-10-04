@@ -1,1 +1,3 @@
+com\enviopack\pages\HomePage.class
+com\enviopack\helpers\WaitHelper.class
 com\enviopack\pages\LoginPage.class
