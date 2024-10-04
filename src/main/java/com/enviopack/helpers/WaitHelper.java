@@ -38,6 +38,17 @@ public class WaitHelper {
         waitForClickability(locator);
         return element;
     }
+    
+    // Esperar unos segundos antes de obtener la URL
+    public static String getCurrentUrlWithWait(WebDriver driver, int seconds) {
+        try {
+            // Espera explícita de X segundos
+            Thread.sleep(seconds * 1000); // Convierte segundos a milisegundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return driver.getCurrentUrl();
+    }
 }
 
 

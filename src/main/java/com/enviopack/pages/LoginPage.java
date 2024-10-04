@@ -34,5 +34,9 @@ public class LoginPage {
         waitHelper.waitForClickability(loginBtn).click();
         return this;
     }
+    
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 
 }

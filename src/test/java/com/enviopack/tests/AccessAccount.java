@@ -3,6 +3,7 @@ package com.enviopack.tests;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.enviopack.common.BaseTest;
+import com.enviopack.helpers.ValidationHelper;
 import com.enviopack.pages.HomePage;
 
 public class AccessAccount extends BaseTest {
@@ -16,5 +17,7 @@ public class AccessAccount extends BaseTest {
         homepage.clickAccessAccountButton();
         homepage.enterSeller(seller);
         homepage.selectFirstSeller();
+        
+        ValidationHelper.validateUrlContainsWithWait(getDriver(), "ordenes", 5);
     }
 }
