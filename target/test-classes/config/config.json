@@ -1,6 +1,8 @@
-{
+{ 
   "url": "https://stg1-appv2.enviopack.com/login",
-  "email": "carla.r@enviopack.com",
-  "password": "noAiaO7l",
-  "browser": "chrome"
+   "browser": "chrome",
+  "email_admin": "carla.r@enviopack.com",
+  "password_admin": "noAiaO7l",
+  "email_seller": "testingv2@gmail.com",
+  "password_seller": "123456"
 }

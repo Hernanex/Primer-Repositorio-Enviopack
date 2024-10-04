@@ -7,7 +7,8 @@
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="testLogin"/>
+          <include name="loginAdmin"/>
+          <include name="loginSeller"/>
         </methods>
       </class> <!-- com.enviopack.tests.LoginTest -->
     </classes>

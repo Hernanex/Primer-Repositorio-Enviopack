@@ -20,15 +20,23 @@ public class LoginPage {
     By loginBtn = By.xpath("//div[@class='button__wrapper button__wrapper--contained button__wrapper--contained-primary']");
 
     // Metodos 
-    public void enterEmail(String email) {
+    public LoginPage enterEmail(String email) {
         waitHelper.waitForVisibility(emailInput).sendKeys(email);
+        return this;
     }
 
-    public void enterPassword(String password) {
+    public LoginPage enterPassword(String password) {
         waitHelper.waitForVisibility(passwordInput).sendKeys(password);
+        return this;
     }
 
-    public void clickLogin() {
+    public LoginPage clickLogin() {
         waitHelper.waitForClickability(loginBtn).click();
+        return this;
     }
+    
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }
