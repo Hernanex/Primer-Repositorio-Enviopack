@@ -3,11 +3,13 @@ package com.enviopack.listeners;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
+import com.enviopack.helpers.DateHelper;
+
+import java.io.File;
 
 public class ExtentTestNGListener implements ITestListener, ISuiteListener {
 
@@ -21,10 +23,23 @@ public class ExtentTestNGListener implements ITestListener, ISuiteListener {
     // Se ejecuta una vez antes de que comience la suite
     @Override
     public void onStart(ISuite suite) {
-        // Inicializa el reporte
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("extentReport.html");
-        sparkReporter.config().setDocumentTitle("Reporte de Nachito");
-        sparkReporter.config().setReportName("Reporte de Nacho");
+        // Obtener la fecha actual y crear el nombre de la carpeta
+        String folderName = "Ejecuciones automatizadas - " + DateHelper.getCurrentDate();
+        String reportFolderPath = System.getProperty("user.dir") + File.separator + folderName;
+        
+        // Crear la carpeta si no existe
+        File reportFolder = new File(reportFolderPath);
+        if (!reportFolder.exists()) {
+            reportFolder.mkdir();
+        }
+
+        // Ruta completa para el archivo de reporte dentro de la carpeta
+        String reportFilePath = reportFolderPath + File.separator + "extentReport.html";
+        
+        // Inicializa el reporte en la carpeta especificada
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportFilePath);
+        sparkReporter.config().setDocumentTitle("Reporte de pruebas - " + DateHelper.getCurrentDateTime());
+        sparkReporter.config().setReportName("Reporte de Nacho - " + DateHelper.getCurrentDateTime());
         
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
@@ -34,7 +49,7 @@ public class ExtentTestNGListener implements ITestListener, ISuiteListener {
     @Override
     public void onFinish(ISuite suite) {
         extent.flush(); // Guarda el reporte
-        System.out.println("Reporte generado: extentReport.html");
+        System.out.println("Reporte generado en la carpeta: Ejecuciones automatizadas - " + DateHelper.getCurrentDate());
     }
 
     // Se ejecuta antes de cada prueba
