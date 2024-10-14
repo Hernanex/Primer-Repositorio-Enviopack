@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
     <listeners>
-        <listener class-name="com.enviopack.listeners.ExtentTestNGListener" />
+        <listener class-name="com.enviopack.reports.ReportListener" />
     </listeners>
     
 		<test name="Login Test">
@@ -16,4 +16,4 @@
 	            <class name="com.enviopack.tests.AccessAccount"/>
 	        </classes>
 	    </test>
-</suite> <!-- Suite -->
+</suite> 

@@ -1,5 +1,0 @@
-com\enviopack\common\BaseTest.class
-com\enviopack\common\CustomWebDriverManager.class
-com\enviopack\config\ConfigReader.class
-com\enviopack\tests\LoginTest.class
-com\enviopack\tests\AccessAccount.class

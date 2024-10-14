@@ -33,9 +33,9 @@
 	    <version>4.21.0</version>
 	</dependency>
 	<dependency>
-    <groupId>io.github.bonigarcia</groupId>
-    <artifactId>webdrivermanager</artifactId>
-    <version>5.8.0</version> <!-- Usa la última versión disponible -->
+	    <groupId>io.github.bonigarcia</groupId>
+	    <artifactId>webdrivermanager</artifactId>
+	    <version>5.8.0</version> <!-- Usa la última versión disponible -->
 	</dependency>
 	<dependency>
     <groupId>com.google.code.gson</groupId>
