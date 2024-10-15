@@ -8,15 +8,25 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginAdmin() {
-    	performLoginAdmin();
-    	
-    	 ValidationHelper.validateUrlContainsWithWait(getDriver(), "backoffice", 5);
+        String expectedText = "backoffice";
+        try {
+            performLoginAdmin();
+            ValidationHelper.validateUrlContainsWithWait(getDriver(), expectedText, 5);
+        } catch (AssertionError e) {
+            String actualUrl = getDriver().getCurrentUrl();
+            throw new AssertionError("Error: Se esperaba que la URL contuviera '" + expectedText + "', pero la URL obtenida fue '" + actualUrl + "'");
+        }
     }
 
     @Test
     public void loginSeller() {
-    	performLoginSeller();
-    	
-    	ValidationHelper.validateUrlContainsWithWait(getDriver(), "ordenes", 5);
+        String expectedText = "ordenes";
+        try {
+            performLoginSeller();
+            ValidationHelper.validateUrlContainsWithWait(getDriver(), expectedText, 5);
+        } catch (AssertionError e) {
+            String actualUrl = getDriver().getCurrentUrl();
+            throw new AssertionError("Error: Se esperaba que la URL contuviera '" + expectedText + "', pero la URL obtenida fue '" + actualUrl + "'");
+        }
     }
 }
