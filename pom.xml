@@ -50,11 +50,6 @@
 	    <scope>test</scope>
 	</dependency>
     <dependency>
-        <groupId>com.aventstack</groupId>
-        <artifactId>extentreports</artifactId>
-        <version>5.0.9</version> 
-    </dependency>
-    <dependency>
 	  <groupId>org.thymeleaf</groupId>
 	  <artifactId>thymeleaf</artifactId>
 	  <version>3.1.2.RELEASE</version>
