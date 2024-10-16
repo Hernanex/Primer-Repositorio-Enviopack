@@ -50,7 +50,7 @@ public class ReportListener extends TestListenerAdapter implements IInvokedMetho
     private void generateReport() {
         try {
             // (Modificación 1) Verificar si la carpeta 'output' existe, si no, crearla
-            String folderPath = "output/Ejecucion de pruebas del dia " + DateHelper.getCurrentDate().replace(":", "-"); // Carpeta con fecha de ejecución (reemplazando ":" por "-")
+            String folderPath = "output/Ejecucion de pruebas del dia " + DateHelper.getCurrentDate();
             if (!Files.exists(Paths.get(folderPath))) {
                 Files.createDirectories(Paths.get(folderPath));
             }
@@ -58,8 +58,8 @@ public class ReportListener extends TestListenerAdapter implements IInvokedMetho
             // Recuperar la configuración desde el archivo JSON
             String url = ConfigReader.getValor("url");
             String browser = ConfigReader.getValor("browser");
-            String startTime = DateHelper.getCurrentDateTime().replace(":", "-"); // Reemplazar ":" en la hora
-            String endTime = DateHelper.getCurrentDateTime().replace(":", "-"); // Reemplazar ":" en la hora
+            String startTime = DateHelper.getCurrentDateTime(); 
+            String endTime = DateHelper.getCurrentDateTime();
 
             // (Modificación 2) Validar que la configuración no sea nula
             if (url == null || browser == null) {
@@ -91,7 +91,7 @@ public class ReportListener extends TestListenerAdapter implements IInvokedMetho
             }
 
             // (Modificación 6) Generar el nombre del archivo con fecha y hora
-            String reportFileName = "Reporte de pruebas " + DateHelper.getCurrentDateTime().replace(":", "-") + ".html";  // Nombre del archivo con fecha y hora
+            String reportFileName = "Reporte de pruebas " + DateHelper.getCurrentDate() + ".html";  // Nombre del archivo con fecha y hora
             String outputPath = folderPath + "/" + reportFileName;  // Ruta completa del archivo
 
             // Guardar el reporte generado en un archivo HTML
