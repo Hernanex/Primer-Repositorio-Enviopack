@@ -16,11 +16,17 @@ import java.util.List;
 
 public class ReportListener extends TestListenerAdapter implements IInvokedMethodListener, ISuiteListener {
 
-    private static final String TEMPLATE_NAME = "TestResult";  // Nombre del template Thymeleaf (sin extensión)
-    private boolean reportGenerated = false;  // Flag para evitar que se genere el reporte varias veces
+    private static final String TEMPLATE_NAME = "TestResult";
+    private boolean reportGenerated = false;
 
-    // Lista para almacenar los resultados de las pruebas
     private List<TestResultInfo> testResults = new ArrayList<>();
+    private String startTime;
+    private String endTime;
+
+    @Override
+    public void onStart(ISuite suite) {
+        this.startTime = DateHelper.getCurrentDateTime();
+    }
 
     @Override
     public void onTestSuccess(ITestResult result) {
@@ -39,62 +45,51 @@ public class ReportListener extends TestListenerAdapter implements IInvokedMetho
 
     @Override
     public void onFinish(ISuite suite) {
-        // Generar el reporte solo al final de la suite (una vez por ejecución de suite)
+        this.endTime = DateHelper.getCurrentDateTime();
         if (!reportGenerated) {
             generateReport();
-            reportGenerated = true;  // Marcar el reporte como generado
+            reportGenerated = true;
         }
     }
 
-    // Método para generar el reporte usando Thymeleaf
     private void generateReport() {
         try {
-            // (Modificación 1) Verificar si la carpeta 'output' existe, si no, crearla
             String folderPath = "output/Ejecucion de pruebas del dia " + DateHelper.getCurrentDate();
             if (!Files.exists(Paths.get(folderPath))) {
                 Files.createDirectories(Paths.get(folderPath));
             }
 
-            // Recuperar la configuración desde el archivo JSON
             String url = ConfigReader.getValor("url");
             String browser = ConfigReader.getValor("browser");
-            String startTime = DateHelper.getCurrentDateTime(); 
-            String endTime = DateHelper.getCurrentDateTime();
 
-            // (Modificación 2) Validar que la configuración no sea nula
             if (url == null || browser == null) {
                 throw new IllegalArgumentException("La configuración 'url' o 'browser' no puede ser null");
             }
 
-            // Crear el contexto de Thymeleaf
             Context context = new Context();
             context.setVariable("url", url);
             context.setVariable("browser", browser);
-            context.setVariable("startTime", startTime);
-            context.setVariable("endTime", endTime);
-            context.setVariable("testResults", testResults);  // Pasar los resultados de las pruebas al template
+            context.setVariable("startTime", this.startTime);
+            context.setVariable("endTime", this.endTime);
+            context.setVariable("testResults", testResults);
 
-            // (Modificación 4) Configurar el motor de plantillas con ajustes adicionales
             ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-            templateResolver.setPrefix("templates/");  // Carpeta de templates
-            templateResolver.setSuffix(".html");  // Extensión del archivo HTML
-            templateResolver.setTemplateMode("HTML");  // Modo de plantilla
-            templateResolver.setCacheable(false);  // Desactivar la caché para facilitar depuración (nuevo)
+            templateResolver.setPrefix("templates/");
+            templateResolver.setSuffix(".html");
+            templateResolver.setTemplateMode("HTML");
+            templateResolver.setCacheable(false);
 
             TemplateEngine templateEngine = new TemplateEngine();
             templateEngine.setTemplateResolver(templateResolver);
 
-            // (Modificación 5) Validación adicional al procesar el template
             String processedHtml = templateEngine.process(TEMPLATE_NAME, context);
             if (processedHtml == null) {
-                throw new Exception("Error al procesar la plantilla. Asegúrate de que la plantilla 'TestResult.html' esté disponible en la carpeta 'templates'.");
+                throw new Exception("Error al procesar la plantilla.");
             }
 
-            // (Modificación 6) Generar el nombre del archivo con fecha y hora
-            String reportFileName = "Reporte de pruebas " + DateHelper.getCurrentDate() + ".html";  // Nombre del archivo con fecha y hora
-            String outputPath = folderPath + "/" + reportFileName;  // Ruta completa del archivo
+            String reportFileName = "Reporte de pruebas " + DateHelper.getCurrentDate() + ".html";
+            String outputPath = folderPath + "/" + reportFileName;
 
-            // Guardar el reporte generado en un archivo HTML
             try (FileWriter writer = new FileWriter(outputPath)) {
                 writer.write(processedHtml);
             }
@@ -113,4 +108,3 @@ public class ReportListener extends TestListenerAdapter implements IInvokedMetho
         }
     }
 }
-

@@ -11,7 +11,7 @@ public class WaitHelper {
     WebDriver driver;
     WebDriverWait wait;
 
-    // Constructor que inicializa el WebDriver y el WebDriverWait con un tiempo de espera de 20 segundos
+    
     public WaitHelper(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -42,8 +42,8 @@ public class WaitHelper {
     // Esperar unos segundos antes de obtener la URL
     public static String getCurrentUrlWithWait(WebDriver driver, int seconds) {
         try {
-            // Espera explícita de X segundos
-            Thread.sleep(seconds * 1000); // Convierte segundos a milisegundos
+            
+            Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

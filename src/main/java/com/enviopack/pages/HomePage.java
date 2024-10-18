@@ -17,17 +17,17 @@ public class HomePage {
         this.waitHelper = new WaitHelper(driver); 
     }
     
-    // Espera y click sobre acceder cuenta
+    // Metodos
     public void clickAccessAccountButton() {
         waitHelper.waitForClickability(accessAccountButton).click();
     }
     
-    // Espera e inserta el dato del seller, por el momento un ID
+    
     public void enterSeller(String seller) {
         waitHelper.waitForVisibility(sellerInput).sendKeys(seller);
     }
     
-    // Espera y selecciona el primer seller
+    
     public void selectFirstSeller() {
     	waitHelper.waitForClickability(firstSellerItem).click();
     }
