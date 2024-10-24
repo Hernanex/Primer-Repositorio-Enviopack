@@ -1,1 +1,17 @@
 /target/
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+.m2/
+.project
+.classpath
+.settings/
+*.log
+/test-output/
+/output/
+/reports/
+/screenshots/
+*.swp
+.DS_Store
+Thumbs.db
+hs_err_pid*
+*.class
