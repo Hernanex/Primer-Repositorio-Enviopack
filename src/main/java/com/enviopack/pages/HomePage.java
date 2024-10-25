@@ -17,19 +17,20 @@ public class HomePage {
         this.waitHelper = new WaitHelper(driver); 
     }
     
-    // Metodos
-    public void clickAccessAccountButton() {
+    // Métodos encadenados
+    public HomePage clickAccessAccountButton() {
         waitHelper.waitForClickability(accessAccountButton).click();
+        return this;  // Devuelve la instancia actual para permitir el encadenamiento
     }
     
-    
-    public void enterSeller(String seller) {
+    public HomePage enterSeller(String seller) {
         waitHelper.waitForVisibility(sellerInput).sendKeys(seller);
+        return this;  // Devuelve la instancia actual para permitir el encadenamiento
     }
     
-    
-    public void selectFirstSeller() {
-    	waitHelper.waitForClickability(firstSellerItem).click();
+    public HomePage selectFirstSeller() {
+        waitHelper.waitForClickability(firstSellerItem).click();
+        return this;  // Devuelve la instancia actual para permitir el encadenamiento
     }
-
 }
+

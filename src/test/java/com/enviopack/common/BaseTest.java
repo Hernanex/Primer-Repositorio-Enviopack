@@ -58,10 +58,10 @@ public class BaseTest {
 
     // Método centralizado para login
     protected void login(String email, String password) {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail(email);
-        loginPage.enterPassword(password);
-        loginPage.clickLogin();
+        new LoginPage(driver)
+        .enterEmail(email)
+        .enterPassword(password)
+        .clickLogin();
     } 
     
     //Metodo para acceder como admin
